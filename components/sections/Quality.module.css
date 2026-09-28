@@ -1,0 +1,51 @@
+.grid {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: var(--paper-alt);
+}
+
+.points {
+  display: grid;
+  gap: 28px;
+  margin: 40px 0 0;
+}
+
+.point {
+  padding-top: 16px;
+  border-top: 2px solid var(--gold);
+}
+
+.point dt {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.point dd {
+  margin: 6px 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+@media (min-width: 640px) {
+  .points {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+  }
+}

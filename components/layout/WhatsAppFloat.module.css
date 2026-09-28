@@ -1,0 +1,38 @@
+.float {
+  position: fixed;
+  inset-inline-end: 20px;
+  bottom: 20px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #25d366;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 10px 28px rgba(10, 42, 34, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(10, 42, 34, 0.32);
+}
+
+.label {
+  display: none;
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 760px) {
+  .float {
+    inset-inline-end: 28px;
+    bottom: 28px;
+    padding: 0 22px 0 18px;
+  }
+  .label {
+    display: inline;
+  }
+}

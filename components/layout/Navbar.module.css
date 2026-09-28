@@ -1,0 +1,202 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(248, 247, 242, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scrolled {
+  border-bottom-color: var(--line);
+  box-shadow: 0 6px 24px rgba(15, 56, 46, 0.06);
+}
+
+.bar {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  flex-shrink: 0;
+}
+
+.desktopNav {
+  display: none;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.link {
+  position: relative;
+  display: block;
+  padding: 10px 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 4px;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+:global([dir='rtl']) .link::after {
+  transform-origin: right;
+}
+
+.link:hover {
+  color: var(--forest);
+}
+
+.link[aria-current='location'] {
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.link[aria-current='location']::after {
+  transform: scaleX(1);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta {
+  display: none;
+  min-height: 44px;
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+.lang,
+.mobileLang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.lang:hover,
+.mobileLang:hover {
+  background: var(--paper-alt);
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--forest);
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: var(--paper-alt);
+}
+
+/* Mobile drawer */
+/* Absolute (not fixed): the header's backdrop-filter would otherwise
+   become the containing block and collapse a fixed drawer. */
+.drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: calc(100dvh - var(--header-h));
+  overflow-y: auto;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  padding-block: 16px 40px;
+}
+
+.mobileLinks li + li {
+  border-top: 1px solid var(--line);
+}
+
+.mobileLink {
+  display: block;
+  padding: 16px 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.mobileLink[aria-current='location'] {
+  color: var(--green);
+}
+
+.mobileActions {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+@media (min-width: 640px) {
+  .cta {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 1080px) {
+  .desktopNav {
+    display: block;
+  }
+  .links {
+    gap: 0;
+  }
+  .link {
+    padding-inline: 10px;
+  }
+  .toggle,
+  .drawer {
+    display: none;
+  }
+}
+
+@media (min-width: 1240px) {
+  .links {
+    gap: 4px;
+  }
+  .link {
+    padding-inline: 12px;
+  }
+}

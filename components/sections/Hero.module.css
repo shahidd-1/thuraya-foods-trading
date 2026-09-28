@@ -1,0 +1,153 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: min(calc(100svh - var(--header-h)), 880px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #fff;
+  background: var(--forest);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 50%;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(10, 42, 34, 0.94) 0%, rgba(15, 56, 46, 0.8) 40%, rgba(15, 56, 46, 0.25) 78%, rgba(15, 56, 46, 0.1) 100%),
+    linear-gradient(0deg, rgba(10, 42, 34, 0.9) 0%, rgba(10, 42, 34, 0) 40%);
+}
+
+.inner {
+  padding-block: clamp(64px, 12vh, 140px) clamp(40px, 7vh, 72px);
+}
+
+.kicker {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--gold);
+}
+
+.title {
+  margin-top: 18px;
+  font-size: clamp(2.5rem, 6.4vw, 5.25rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+.rule {
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-block: 28px;
+  background: var(--gold);
+}
+
+.lead {
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.4vw, 1.1875rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.strip {
+  background: rgba(10, 42, 34, 0.72);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.points {
+  display: grid;
+  gap: 18px;
+  padding-block: 24px;
+}
+
+.point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--leaf);
+}
+
+.pointTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.pointText {
+  margin-top: 2px;
+  font-size: 0.875rem;
+  color: var(--on-dark-muted);
+}
+
+@media (min-width: 760px) {
+  .points {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+}
+
+/* The page's one orchestrated moment: the hero copy settles in on load. */
+@media (prefers-reduced-motion: no-preference) {
+  .inner > * {
+    animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .inner > *:nth-child(2) { animation-delay: 0.08s; }
+  .inner > *:nth-child(3) { animation-delay: 0.16s; }
+  .inner > *:nth-child(4) { animation-delay: 0.22s; }
+  .inner > *:nth-child(5) { animation-delay: 0.3s; }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Right-to-left: text sits on the right, so the shade and type settings flip. */
+:global([dir='rtl']) .shade {
+  background:
+    linear-gradient(270deg, rgba(10, 42, 34, 0.94) 0%, rgba(15, 56, 46, 0.8) 40%, rgba(15, 56, 46, 0.25) 78%, rgba(15, 56, 46, 0.1) 100%),
+    linear-gradient(0deg, rgba(10, 42, 34, 0.9) 0%, rgba(10, 42, 34, 0) 40%);
+}
+
+:global([dir='rtl']) .title {
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+:global([dir='rtl']) .kicker {
+  font-style: normal;
+}

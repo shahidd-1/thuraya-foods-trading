@@ -1,0 +1,43 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mark {
+  width: 48px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.wordmark {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.sub {
+  margin-top: 4px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+.light .name {
+  color: #fff;
+}
+
+.light .sub {
+  color: var(--gold);
+}
